@@ -18,6 +18,7 @@ namespace BinaryCalculator
         public Form1()
         {
             InitializeComponent();
+            layout.Text = "0";
         }
 
         private void layout_Click(object sender, EventArgs e)
@@ -54,40 +55,50 @@ namespace BinaryCalculator
 
         private void buton0_Click(object sender, EventArgs e)
         {
+            
             if (numeroBinario.Length > 0)
             {
                 numeroBinario += 0;
                 layout.Text = separa_Digitos(numeroBinario);
             }
-        } 
+
+            this.ActiveControl = null;
+
+        }
 
         private void buton1_Click(object sender, EventArgs e)
         {
             numeroBinario += 1;
             layout.Text = separa_Digitos(numeroBinario);
+            this.ActiveControl = null;
+
         }
 
         private void ereaseAll_Click(object sender, EventArgs e)
         {
             numeroBinario = "";
             layout.Text = numeroBinario ;
+            layout.Text = "0";
+            this.ActiveControl = null;
+
         }
 
         private void ereaseDigit_Click(object sender, EventArgs e)
         {
-            if(numeroBinario.Length > 0)
+            if (numeroBinario.Length > 0)
             {
                 numeroBinario = numeroBinario.Substring(0, numeroBinario.Length - 1);
                 layout.Text = separa_Digitos(numeroBinario);
+                if(numeroBinario.Length < 1)
+                    layout.Text="0";
 
             }
+
+            this.ActiveControl = null;
+
+
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
     }
+
 }
