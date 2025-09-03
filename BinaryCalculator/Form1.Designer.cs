@@ -1,6 +1,6 @@
 ﻿namespace BinaryCalculator
 {
-    partial class Form1
+    partial class BinaryCalcForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // BinaryCalcForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(334, 411);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "BinaryCalcForm";
+            this.Text = "Binary Calc";
             this.ResumeLayout(false);
 
         }
