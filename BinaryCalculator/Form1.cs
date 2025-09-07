@@ -12,9 +12,92 @@ namespace BinaryCalculator
 {
     public partial class BinaryCalcForm : Form
     {
+        string numeroBinario = "";
+        
         public BinaryCalcForm()
         {
             InitializeComponent();
+            layout.Text = "0";
         }
+
+        private void layout_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_Change(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(numeroBinario)) 
+            {
+                hexLabel.Text = "0";
+                decLabel.Text = "0";
+                octLabel.Text = "0";
+
+                return;
+            }
+           int decim= Convert.ToInt32(numeroBinario, 2);
+
+            decLabel.Text = decim.ToString();
+            octLabel.Text = Convert.ToString(decim,8);
+            hexLabel.Text = Convert.ToString(decim,16).ToUpper();
+        }
+
+        private string separa_Digitos(string binario)
+        {
+            for (int i = binario.Length - 4; i > 0; i-=4 )
+            {
+                binario = binario.Insert(i, " ");
+
+            }
+            return binario;
+        }
+
+        private void buton0_Click(object sender, EventArgs e)
+        {
+            
+            if (numeroBinario.Length > 0)
+            {
+                numeroBinario += 0;
+                layout.Text = separa_Digitos(numeroBinario);
+            }
+
+            this.ActiveControl = null;
+
+        }
+
+        private void buton1_Click(object sender, EventArgs e)
+        {
+            numeroBinario += 1;
+            layout.Text = separa_Digitos(numeroBinario);
+            this.ActiveControl = null;
+
+        }
+
+        private void ereaseAll_Click(object sender, EventArgs e)
+        {
+            numeroBinario = "";
+            layout.Text = numeroBinario ;
+            layout.Text = "0";
+            this.ActiveControl = null;
+
+        }
+
+        private void ereaseDigit_Click(object sender, EventArgs e)
+        {
+            if (numeroBinario.Length > 0)
+            {
+                numeroBinario = numeroBinario.Substring(0, numeroBinario.Length - 1);
+                layout.Text = separa_Digitos(numeroBinario);
+                if(numeroBinario.Length < 1)
+                    layout.Text="0";
+
+            }
+
+            this.ActiveControl = null;
+
+
+        }
+
     }
+
 }
