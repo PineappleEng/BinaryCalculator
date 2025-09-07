@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace BinaryCalculator
 {
-
-    public partial class Form1 : Form
+    public partial class BinaryCalcForm : Form
     {
         string numeroBinario = "";
         
-        public Form1()
+        public BinaryCalcForm()
         {
             InitializeComponent();
             layout.Text = "0";

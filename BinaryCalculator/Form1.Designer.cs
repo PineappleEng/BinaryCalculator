@@ -1,6 +1,6 @@
 ﻿namespace BinaryCalculator
 {
-    partial class Form1
+    partial class BinaryCalcForm
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,7 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // BinaryCalcForm
             // layout
             // 
             this.layout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -172,8 +173,8 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(425, 553);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "BinaryCalcForm";
+            this.Text = "Binary Calc";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
