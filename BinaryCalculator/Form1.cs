@@ -170,6 +170,11 @@ namespace BinaryCalculator
                 display_num = Not(display_num);
                 calc_display.Text = Stylize(display_num);
             }
+            else
+            {
+                display_num = "1";
+                calc_display.Text = Stylize(display_num);
+            }
         }
 
         private void bitwise_and_Click(object sender, EventArgs e)
@@ -289,5 +294,4 @@ namespace BinaryCalculator
             this.ActiveControl = null;
         }
     }
-
 }
