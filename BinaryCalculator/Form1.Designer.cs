@@ -163,7 +163,7 @@
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(305, 49);
+            this.label2.Size = new System.Drawing.Size(306, 49);
             this.label2.TabIndex = 10;
             this.label2.Text = "BINARY CALCULATOR";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -190,7 +190,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 160);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(305, 251);
+            this.panel1.Size = new System.Drawing.Size(306, 251);
             this.panel1.TabIndex = 12;
             // 
             // two_complement
@@ -365,7 +365,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 411);
+            this.ClientSize = new System.Drawing.Size(306, 411);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.octLabel);
@@ -373,6 +373,7 @@
             this.Controls.Add(this.hexLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.calc_display);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(323, 457);
             this.Name = "BinaryCalcForm";
