@@ -4,13 +4,7 @@ using System.Windows.Forms;
 
 namespace BinaryCalculator
 {
-    public enum Operation
-    {
-        Sum,
-        Rest,
-        Mult,
-        Div
-    }
+    public enum Operation { None, Sum, Subt, Mult, Div, And, Or, Xor }
 
     public partial class BinaryCalcForm : Form
     {
@@ -35,6 +29,7 @@ namespace BinaryCalculator
             octLabel.Text     = kZero;
             decLabel.Text     = kZero;
             hexLabel.Text     = kZero;
+            last_op           = Operation.None;
         }
 
         private void label_Change(object sender, EventArgs e)
@@ -106,7 +101,7 @@ namespace BinaryCalculator
         {
             if (curr_result == kEmpty_str)
                 curr_result = display_num;
-            else
+            else if (display_num != kEmpty_str)
             {
                 curr_result = Add(curr_result, display_num);
                 calc_display.Text = Stylize(curr_result);
@@ -121,13 +116,13 @@ namespace BinaryCalculator
         {
             if (curr_result == kEmpty_str)
                 curr_result = display_num;
-            else
+            else if (display_num != kEmpty_str)
             {
                 curr_result = Subtract(curr_result, display_num);
                 calc_display.Text = Stylize(curr_result);
             }
             display_num = kEmpty_str;
-            last_op = Operation.Rest;
+            last_op = Operation.Subt;
 
             this.ActiveControl = null;
         }
@@ -136,7 +131,7 @@ namespace BinaryCalculator
         {
             if (curr_result == kEmpty_str)            
                 curr_result = display_num;
-            else
+            else if (display_num != kEmpty_str)
             {
                 curr_result = Multiply(curr_result, display_num);
                 calc_display.Text = Stylize(curr_result);
@@ -151,7 +146,7 @@ namespace BinaryCalculator
         {
             if (curr_result == kEmpty_str)
                 curr_result = display_num;
-            else
+            else if (display_num != kEmpty_str)
             {
                 curr_result = Divide(curr_result, display_num);
                 if (curr_result == "Math Error!")
@@ -170,37 +165,83 @@ namespace BinaryCalculator
 
         private void bitwise_not_Click(object sender, EventArgs e)
         {
-
+            if (display_num != kEmpty_str)
+            {
+                display_num = Not(display_num);
+                calc_display.Text = Stylize(display_num);
+            }
         }
 
         private void bitwise_and_Click(object sender, EventArgs e)
         {
+            if (curr_result == kEmpty_str)
+                curr_result = display_num;
+            else if (display_num != kEmpty_str)
+            {
+                curr_result = And(curr_result, display_num);
+                calc_display.Text = Stylize(curr_result);
+            }
+            display_num = kEmpty_str;
+            last_op = Operation.And;
 
+            this.ActiveControl = null;
         }
 
         private void bitwise_or_Click(object sender, EventArgs e)
         {
+            if (curr_result == kEmpty_str)
+                curr_result = display_num;
+            else if (display_num != kEmpty_str)
+            {
+                curr_result = Or(curr_result, display_num);
+                calc_display.Text = Stylize(curr_result);
+            }
+            display_num = kEmpty_str;
+            last_op = Operation.Or;
 
+            this.ActiveControl = null;
         }
 
         private void bitwise_xor_Click(object sender, EventArgs e)
         {
+            if (curr_result == kEmpty_str)
+                curr_result = display_num;
+            else if (display_num != kEmpty_str)
+            {
+                curr_result = Xor(curr_result, display_num);
+                calc_display.Text = Stylize(curr_result);
+            }
+            display_num = kEmpty_str;
+            last_op = Operation.Xor;
 
+            this.ActiveControl = null;
         }
 
         private void two_complement_Click(object sender, EventArgs e)
         {
-
+            if (display_num != kEmpty_str)
+            {
+                display_num = TwoComplement(display_num);
+                calc_display.Text = Stylize(display_num);
+            }
         }
 
         private void shift_left_Click(object sender, EventArgs e)
         {
-
+            if (display_num != kEmpty_str)
+            {
+                display_num = ShiftLeft(display_num);
+                calc_display.Text = Stylize(display_num);
+            }
         }
 
         private void shift_right_Click(object sender, EventArgs e)
         {
-
+            if (display_num != kEmpty_str)
+            {
+                display_num = ShiftRight(display_num);
+                calc_display.Text = Stylize(display_num);
+            }
         }
 
         private void equal_Click(object sender, EventArgs e)
@@ -213,7 +254,7 @@ namespace BinaryCalculator
                         calc_display.Text = Stylize(Add(curr_result, display_num));
                         curr_result = kEmpty_str;
                         break;
-                    case Operation.Rest:
+                    case Operation.Subt:
                         calc_display.Text = Stylize(Subtract(curr_result, display_num));
                         curr_result = kEmpty_str;
                         break;
@@ -229,7 +270,20 @@ namespace BinaryCalculator
                             calc_display.Text = Stylize(curr_result);
                         curr_result = kEmpty_str;
                         break;
+                    case Operation.And:
+                        calc_display.Text = Stylize(And(curr_result, display_num));
+                        curr_result = kEmpty_str;
+                        break;
+                    case Operation.Or:
+                        calc_display.Text = Stylize(Or(curr_result, display_num));
+                        curr_result = kEmpty_str;
+                        break;
+                    case Operation.Xor:
+                        calc_display.Text = Stylize(Xor(curr_result, display_num));
+                        curr_result = kEmpty_str;
+                        break;
                 }
+                last_op = Operation.None;
             }
 
             this.ActiveControl = null;

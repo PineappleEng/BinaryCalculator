@@ -57,8 +57,8 @@ namespace BinaryCalculator
 
         private static string Not(string b)
         {
-            int bit_lenght = b.Length;
-            long result = ~StringToDecimal(b) & ((1L << bit_lenght) - 1L);
+            long bit_mask = (1L << b.Length) - 1L;
+            long result = ~StringToDecimal(b) & bit_mask;
             return DecimalToBinaryString(result);
         }
 
